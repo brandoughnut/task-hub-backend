@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "dK8ipbStIa/VlXFGwNVN8D+6YP7UhAr8K/Uhoj+M1YM=",
+  "Source": "task-hub-backend",
+  "BasePath": "_content/task-hub-backend",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
