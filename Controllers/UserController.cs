@@ -58,7 +58,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    [Route("UpdateUserInfo/{id}/{firstName}/{lastName}/{contact}/{bio}/{imag}")]
+    [Route("UpdateUserInfo/{id}/{firstName}/{lastName}/{contact}/{bio}/{image}")]
     public bool UpdateUserInfo(int id, string firstName, string lastName, string contact, string bio, string image)
     {
 
