@@ -175,9 +175,25 @@ public class UserService : ControllerBase
         return UserInfo;
     }
 
-    public bool UpdateUserInfo(UserModel userToUpdate)
+    public bool UpdateUserInfo(int id, string firstName, string lastName, string contact, string bio, string image)
     {
-        _context.Update<UserModel>(userToUpdate);
-        return _context.SaveChanges() != 0;
+
+        UserModel foundUser = GetUserById(id);
+        bool result = false;
+        if (foundUser != null)
+        {
+            foundUser.FirstName = firstName;
+            foundUser.LastName = lastName;
+            foundUser.Contact = contact;
+            foundUser.Bio = bio;
+            foundUser.Image = image;
+            _context.Update<UserModel>(foundUser);
+            result = _context.SaveChanges() != 0;
+        }
+        return result;
+    }
+    public IEnumerable<UserModel> GetProfileByUserId(string username)
+    {
+        return _context.UserInfo.Where(item => item.Username == username);
     }
 }

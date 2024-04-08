@@ -58,12 +58,19 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    [Route("UpdateUserInfo")]
-    public bool UpdateUserInfo(UserModel userToUpdate)
+    [Route("UpdateUserInfo/{id}/{firstName}/{lastName}/{contact}/{bio}/{imag}")]
+    public bool UpdateUserInfo(int id, string firstName, string lastName, string contact, string bio, string image)
     {
-        return _data.UpdateUserInfo(userToUpdate);
+
+        return _data.UpdateUserInfo(id, firstName, lastName, contact, bio, image);
     }
 
+    [HttpGet]
+    [Route("GetProfileByUserId/{username}")]
+    public IEnumerable<UserModel> GetProfileByUserId(string username)
+    {
+        return _data.GetProfileByUserId(username);
+    }
 
 
 }
