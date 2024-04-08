@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240327083410_init")]
+    [Migration("20240408221326_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -32,7 +32,22 @@ namespace task_hub_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
+                    b.Property<string>("Bio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Contact")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Hash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Salt")
