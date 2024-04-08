@@ -56,4 +56,14 @@ public class UserController : ControllerBase
     {
         return _data.GetUserIdDTOByUsername(username);
     }
+
+    [HttpPut]
+    [Route("UpdateUserInfo")]
+    public bool UpdateUserInfo(UserModel userToUpdate)
+    {
+        return _data.UpdateUserInfo(userToUpdate);
+    }
+
+
+
 }

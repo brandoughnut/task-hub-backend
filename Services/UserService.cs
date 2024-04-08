@@ -174,4 +174,10 @@ public class UserService : ControllerBase
 
         return UserInfo;
     }
+
+    public bool UpdateUserInfo(UserModel userToUpdate)
+    {
+        _context.Update<UserModel>(userToUpdate);
+        return _context.SaveChanges() != 0;
+    }
 }
