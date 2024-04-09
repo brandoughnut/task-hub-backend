@@ -72,5 +72,10 @@ public class UserController : ControllerBase
         return _data.GetProfileByUserId(username);
     }
 
+    [HttpPut]
+    [Route("ForgotPassword/{username}/{newPassword}")]
+    public bool ForgotPassword(string username, string newPassword){
+        return _data.ForgotPassword(username, newPassword);
+    }
 
 }

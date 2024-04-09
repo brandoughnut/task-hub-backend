@@ -196,4 +196,27 @@ public class UserService : ControllerBase
     {
         return _context.UserInfo.Where(item => item.Username == username);
     }
+
+    public bool ForgotPassword(string username, string newPassword){
+
+        UserModel foundUser = GetUserByUsername(username);
+        bool result = false;
+
+        if (foundUser != null)
+        {
+
+            var hashPassword = HashPassword(newPassword);
+
+            foundUser.Salt = hashPassword.Salt;
+            foundUser.Hash = hashPassword.Hash;
+
+            _context.Update<UserModel>(foundUser);
+
+            result = _context.SaveChanges() != 0;
+
+        }
+
+        return result;
+    }
+
 }
