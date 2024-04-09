@@ -13,9 +13,6 @@ public class UserModel
     public string? Bio { get; set; }
     public string? Image { get; set; }
 
-
-
-
     public UserModel()
     {
 
