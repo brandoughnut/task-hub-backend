@@ -101,7 +101,7 @@ public class UserService : ControllerBase
                     issuer: "http://localhost:5000",
                     audience: "http://localhost:5000",
                     claims: new List<Claim>(), // Claims can be added here if needed
-                    expires: DateTime.Now.AddMinutes(30), // Set token expiration time (e.g., 30 minutes)
+                    expires: DateTime.Now.AddMinutes(10), // Set token expiration time (e.g., 30 minutes)
                     signingCredentials: signinCredentials // Set signing credentials
                 );
 

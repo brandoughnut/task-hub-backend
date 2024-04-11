@@ -11,6 +11,35 @@ namespace task_hub_backend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "ProjectInfo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    ProjectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProjectInfo", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RelationInfo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RelationInfo", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserInfo",
                 columns: table => new
                 {
@@ -34,6 +63,12 @@ namespace task_hub_backend.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ProjectInfo");
+
+            migrationBuilder.DropTable(
+                name: "RelationInfo");
+
             migrationBuilder.DropTable(
                 name: "UserInfo");
         }

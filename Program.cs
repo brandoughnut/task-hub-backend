@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ProjectService>();
 builder.Services.AddScoped<PasswordService>();
 
 var connectionString = builder.Configuration.GetConnectionString("MyBlogString");
@@ -15,7 +16,7 @@ builder.Services.AddDbContext<DataContext>(Options => Options.UseSqlServer(conne
 
 builder.Services.AddCors(options => options.AddPolicy("BlogPolicy", 
 builder => {
-    builder.WithOrigins("http://localhost:3000", "http://localhost:5044")
+    builder.WithOrigins("http://localhost:3000", "http://localhost:5044", "http://localhost:5105", "https://task-hub-fullstack.vercel.app")
     .AllowAnyHeader()
     .AllowAnyMethod();
 }));

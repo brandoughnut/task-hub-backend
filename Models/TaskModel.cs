@@ -2,7 +2,7 @@
 namespace task_hub_backend.Models;
 public class TaskModel
 {
-    public int TaskID { get; set; }
+    public int ID { get; set; }
     public int ProjectID3 { get; set; }
     public string? TaskName { get; set; }
     public string? TaskDescription { get; set; }
