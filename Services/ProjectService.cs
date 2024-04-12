@@ -15,6 +15,13 @@ namespace task_hub_backend.Services;
         public bool CreateProject(ProjectModel newProject)
         {
             _context.Add(newProject);
+            
+            RelationModel relationModel = new RelationModel();
+
+            relationModel.UserID = newProject.UserID;
+            relationModel.ProjectID = newProject.ID;
+
+            _context.Add(relationModel);
 
             return _context.SaveChanges() != 0;
         }
@@ -36,14 +43,38 @@ namespace task_hub_backend.Services;
             return _context.SaveChanges() != 0;
         }
 
-        // public bool AddUserToProjectByUserId(RelationModel addUser)
-        // {
-            
-        // }
-
-        public bool IsUserInProject(int UserID)
+        public ProjectModel GetProjectByID(int projectID)
         {
-            return _context.RelationInfo.SingleOrDefault(user => user.UserID == UserID) != null;
+            return _context.ProjectInfo.SingleOrDefault(project => project.ID == projectID);
+        }
+
+        public IEnumerable<RelationModel> GetAllUsersWithinProject(int projectID)
+        {
+            return _context.RelationInfo.Where(project => project.ProjectID == projectID);
+        }
+
+        public IEnumerable<RelationModel> GetAllProjectsUserIsIn(int userID)
+        {
+            return _context.RelationInfo.Where(user => user.UserID == userID);
+        }
+
+        public bool AddUserToProjectByUserId(RelationModel relationModel)
+        {
+            bool result = false;
+            
+            if(!IsUserInProject(relationModel.UserID, relationModel.ProjectID)){
+
+            _context.Add(relationModel);
+
+            result = _context.SaveChanges() != 0;
+            }
+
+            return result;
+        }
+
+        public bool IsUserInProject(int userID, int projectID)
+        {
+            return _context.RelationInfo.SingleOrDefault(check => check.UserID == userID && check.ProjectID == projectID) != null;
         }
 
     }

@@ -22,12 +22,12 @@ namespace task_hub_backend.Controllers;
             return _data.CreateProject(newProject);
         }
 
-        // [HttpPost]
-        // [Route("AddUserToProjectByUserId")]
-        // public bool AddUserToProjectByUserId(RelationModel addUser)
-        // {
-        //     return _data.AddUserToProjectByUserId(addUser);
-        // }
+        [HttpPost]
+        [Route("AddUserToProjectByUserId")]
+        public bool AddUserToProjectByUserId(RelationModel relationModel)
+        {
+            return _data.AddUserToProjectByUserId(relationModel);
+        }
 
         [HttpGet]
         [Route("GetAllProjects")]
@@ -37,10 +37,31 @@ namespace task_hub_backend.Controllers;
         }
 
         [HttpGet]
+        [Route("GetProjectByID/{projectID}")]
+        public ProjectModel GetProjectByID(int projectID)
+        {
+            return _data.GetProjectByID(projectID);
+        }
+
+        [HttpGet]
         [Route("GetAllRelations")]
         public IEnumerable<RelationModel> GetAllRelations()
         {
             return _data.GetAllRelations();
+        }
+
+        [HttpGet]
+        [Route("GetAllUsersWithinProject/{projectID}")]
+        public IEnumerable<RelationModel> GetAllUsersWithinProject(int projectID)
+        {
+            return _data.GetAllUsersWithinProject(projectID);
+        }
+
+        [HttpGet]
+        [Route("GetAllProjectsUserIsIn/{userID}")]
+        public IEnumerable<RelationModel> GetAllProjectsUserIsIn(int userID)
+        {
+            return _data.GetAllProjectsUserIsIn(userID);
         }
 
         [HttpDelete]
@@ -49,4 +70,5 @@ namespace task_hub_backend.Controllers;
         {
             return _data.DeleteProject(projectDelete);
         }
+        
     }
