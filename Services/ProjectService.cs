@@ -15,9 +15,9 @@ namespace task_hub_backend.Services;
         public bool CreateProject(ProjectModel newProject)
         {
             _context.Add(newProject);
-            
+            // var dbSet = _context.GetType().GetProperty('ProjectModel')?.GetValue(_context) as IQueryable<object>;
             RelationModel relationModel = new RelationModel();
-
+            // int projects = _context.ProjectInfo.Length;
             relationModel.UserID = newProject.UserID;
             relationModel.ProjectID = newProject.ID;
 
