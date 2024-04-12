@@ -58,13 +58,17 @@ namespace task_hub_backend.Services;
             return _context.RelationInfo.Where(user => user.UserID == userID);
         }
 
-        public bool AddUserToProjectByUserId(RelationModel relationModel)
+        public bool AddUserToProjectByUserId(int userID, int projectID)
         {
+            RelationModel newUser = new RelationModel();
             bool result = false;
-            
-            if(!IsUserInProject(relationModel.UserID, relationModel.ProjectID)){
 
-            _context.Add(relationModel);
+            if(!IsUserInProject(userID, projectID) && DoesUserExist(userID)){
+
+            newUser.UserID = userID;
+            newUser.ProjectID = projectID;
+            
+            _context.Add(newUser);
 
             result = _context.SaveChanges() != 0;
             }
@@ -75,6 +79,11 @@ namespace task_hub_backend.Services;
         public bool IsUserInProject(int userID, int projectID)
         {
             return _context.RelationInfo.SingleOrDefault(check => check.UserID == userID && check.ProjectID == projectID) != null;
+        }
+
+        public bool DoesUserExist(int userID)
+        {
+            return _context.UserInfo.SingleOrDefault(user => user.ID == userID) != null;
         }
 
     }

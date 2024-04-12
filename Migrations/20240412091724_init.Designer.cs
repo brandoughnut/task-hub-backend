@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240411211500_init")]
+    [Migration("20240412091724_init")]
     partial class init
     {
         /// <inheritdoc />

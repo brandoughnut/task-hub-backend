@@ -23,10 +23,10 @@ namespace task_hub_backend.Controllers;
         }
 
         [HttpPost]
-        [Route("AddUserToProjectByUserId")]
-        public bool AddUserToProjectByUserId(RelationModel relationModel)
+        [Route("AddUserToProjectByUserId/{userID}/{projectID}")]
+        public bool AddUserToProjectByUserId(int userID, int projectID)
         {
-            return _data.AddUserToProjectByUserId(relationModel);
+            return _data.AddUserToProjectByUserId(userID, projectID);
         }
 
         [HttpGet]
