@@ -40,6 +40,27 @@ namespace task_hub_backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TaskInfo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProjectID = table.Column<int>(type: "int", nullable: false),
+                    TaskName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaskDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TaskDuration = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    DueDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Priority = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskInfo", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserInfo",
                 columns: table => new
                 {
@@ -68,6 +89,9 @@ namespace task_hub_backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "RelationInfo");
+
+            migrationBuilder.DropTable(
+                name: "TaskInfo");
 
             migrationBuilder.DropTable(
                 name: "UserInfo");
