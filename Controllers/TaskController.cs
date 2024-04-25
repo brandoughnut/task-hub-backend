@@ -42,4 +42,17 @@ namespace task_hub_backend.Controllers;
             return _data.EditTask(taskToUpdate);
         }
 
+        [HttpGet]
+        [Route("GetTasksByStatus/{status}/{projectID}")]
+        public IEnumerable<TaskModel> GetTasksByStatus(string status, int projectID)
+        {
+            return _data.GetTasksByStatus(status, projectID);
+        }
+
+        [HttpDelete]
+        [Route("DeleteTask/{taskID}")]
+        public bool DeleteTask(int taskID)
+        {
+            return _data.DeleteTask(taskID);
+        }
     }
