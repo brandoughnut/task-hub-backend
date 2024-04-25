@@ -65,10 +65,17 @@ namespace task_hub_backend.Controllers;
         }
 
         [HttpDelete]
-        [Route("DeleteProject")]
-        public bool DeleteProject(ProjectModel projectDelete)
+        [Route("DeleteProject/{projectID}")]
+        public bool DeleteProject(int projectID)
         {
-            return _data.DeleteProject(projectDelete);
+            return _data.DeleteProject(projectID);
         }
-        
+
+        [HttpDelete]
+        [Route("RemoveUserFromProjectByID/{userID}/{projectID}")]
+        public bool RemoveUserFromProjectByUserId(int userID, int projectID)
+        {
+            return _data.RemoveUserFromProjectByUserId(userID, projectID);
+        }
+
     }

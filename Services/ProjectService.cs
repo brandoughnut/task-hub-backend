@@ -14,6 +14,7 @@ namespace task_hub_backend.Services;
 
         public bool CreateProject(ProjectModel newProject)
         {
+            newProject.IsDeleted = false;
             _context.Add(newProject);
             
             RelationModel relationModel = new RelationModel();
@@ -36,11 +37,31 @@ namespace task_hub_backend.Services;
             return _context.RelationInfo;
         }
 
-        public bool DeleteProject(ProjectModel projectDelete)
+        public bool DeleteProject(int projectID)
         {
-            projectDelete.IsDeleted = true;
-            _context.Update<ProjectModel>(projectDelete);
-            return _context.SaveChanges() != 0;
+            ProjectModel projectOwner = GetProjectByID(projectID);
+            IEnumerable<RelationModel> usersWithinProject = GetAllUsersWithinProject(projectID);
+            bool result = false;
+            if(projectOwner != null){
+                projectOwner.IsDeleted = true;
+                _context.Update<ProjectModel>(projectOwner);
+                _context.RemoveRange(usersWithinProject);
+                result = _context.SaveChanges() != 0;
+            }
+
+            return result;
+
+        }
+
+        public bool RemoveUserFromProjectByUserId(int userID, int projectID)
+        {
+            RelationModel user = _context.RelationInfo.SingleOrDefault(retrieve => retrieve.UserID == userID && retrieve.ProjectID == projectID);
+            bool result = false;
+            if(user != null){
+                _context.Remove<RelationModel>(user);
+                result = _context.SaveChanges() != 0;
+            }
+            return result;
         }
 
         public ProjectModel GetProjectByID(int projectID)
