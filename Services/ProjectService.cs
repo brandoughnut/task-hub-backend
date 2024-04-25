@@ -12,7 +12,13 @@ namespace task_hub_backend.Services;
             _context = context;
         }
 
-        public bool CreateProject(ProjectModel newProject)
+        public bool SaveChangesToDataBase()
+        {
+            return _context.SaveChanges() != 0;
+        }
+
+
+        public int CreateProject(ProjectModel newProject)
         {
             newProject.IsDeleted = false;
             _context.Add(newProject);
@@ -24,7 +30,9 @@ namespace task_hub_backend.Services;
 
             _context.Add(relationModel);
 
-            return _context.SaveChanges() != 0;
+            SaveChangesToDataBase();
+
+            return _context.ProjectInfo.Count();
         }
 
         public IEnumerable<ProjectModel> GetAllProjects()

@@ -17,7 +17,7 @@ namespace task_hub_backend.Controllers;
 
         [HttpPost]
         [Route("CreateProject")]
-        public bool CreateProject(ProjectModel newProject)
+        public int CreateProject(ProjectModel newProject)
         {
             return _data.CreateProject(newProject);
         }
