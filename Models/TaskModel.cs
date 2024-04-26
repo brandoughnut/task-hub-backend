@@ -12,4 +12,9 @@ public class TaskModel
     public string? Priority { get; set; }
     public string? Status { get; set; }
     public bool IsDeleted { get; set; }
+
+    public TaskModel()
+    {
+        
+    }
 }

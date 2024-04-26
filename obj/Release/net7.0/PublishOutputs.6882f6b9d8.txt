@@ -6,6 +6,8 @@
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/task-hub-backend.pdb
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Azure.Core.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Azure.Identity.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.AspNet.SignalR.Core.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.AspNet.SignalR.SystemWeb.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.AspNetCore.OpenApi.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.Data.SqlClient.dll
@@ -22,8 +24,13 @@
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.IdentityModel.Tokens.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.OpenApi.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.Owin.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.Owin.Host.SystemWeb.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.Owin.Security.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.SqlServer.Server.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Microsoft.Win32.SystemEvents.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Newtonsoft.Json.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Owin.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Swashbuckle.AspNetCore.Swagger.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll

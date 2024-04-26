@@ -74,3 +74,10 @@
 /Users/brandon/Documents/Codestack/task-hub-backend/obj/Release/net7.0/task-hub-backend.pdb
 /Users/brandon/Documents/Codestack/task-hub-backend/obj/Release/net7.0/task-hub-backend.genruntimeconfig.cache
 /Users/brandon/Documents/Codestack/task-hub-backend/obj/Release/net7.0/ref/task-hub-backend.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Microsoft.AspNet.SignalR.Core.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Microsoft.AspNet.SignalR.SystemWeb.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Microsoft.Owin.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Microsoft.Owin.Host.SystemWeb.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Microsoft.Owin.Security.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Newtonsoft.Json.dll
+/Users/brandon/Documents/Codestack/task-hub-backend/bin/Release/net7.0/Owin.dll

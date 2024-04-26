@@ -9,6 +9,7 @@ namespace task_hub_backend.Services.Context;
         public DbSet<ProjectModel> ProjectInfo { get; set; }
         public DbSet<RelationModel> RelationInfo { get; set; }
         public DbSet<TaskModel> TaskInfo { get; set; }
+        public DbSet<MessageModel> MessageInfo { get; set; }
         public DataContext(DbContextOptions options) : base(options)
         {
             
