@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240425093743_init")]
+    [Migration("20240426073008_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -23,6 +23,28 @@ namespace task_hub_backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("task_hub_backend.Models.MessageModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Message")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("MessageInfo");
+                });
 
             modelBuilder.Entity("task_hub_backend.Models.ProjectModel", b =>
                 {
