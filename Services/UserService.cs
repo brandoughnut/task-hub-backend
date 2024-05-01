@@ -175,22 +175,21 @@ public class UserService : ControllerBase
         return UserInfo;
     }
 
-    public bool UpdateUserInfo(int id, string firstName, string lastName, string contact, string bio, string image)
+    public IActionResult UpdateUserInfo(UserModel updateUser)
     {
 
-        UserModel foundUser = GetUserById(id);
-        bool result = false;
-        if (foundUser != null)
+        UserModel existingUser = GetUserById(updateUser.ID);
+
+        if (existingUser != null)
         {
-            foundUser.FirstName = firstName;
-            foundUser.LastName = lastName;
-            foundUser.Contact = contact;
-            foundUser.Bio = bio;
-            foundUser.Image = image;
-            _context.Update<UserModel>(foundUser);
-            result = _context.SaveChanges() != 0;
+            existingUser.FirstName = updateUser.FirstName;
+            existingUser.LastName = updateUser.LastName;
+            existingUser.Contact = updateUser.Contact;
+            existingUser.Bio = updateUser.Bio;
+            existingUser.Image = updateUser.Image;
+            _context.SaveChanges();
         }
-        return result;
+        return Ok(existingUser);
     }
     public IEnumerable<UserModel> GetProfileByUsername(string username)
     {

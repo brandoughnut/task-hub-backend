@@ -58,11 +58,11 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    [Route("UpdateUserInfo/{id}/{firstName}/{lastName}/{contact}/{bio}/{image}")]
-    public bool UpdateUserInfo(int id, string firstName, string lastName, string contact, string bio, string image)
+    [Route("UpdateUserInfo")]
+    public IActionResult UpdateUserInfo(UserModel updateUser)
     {
 
-        return _data.UpdateUserInfo(id, firstName, lastName, contact, bio, image);
+        return _data.UpdateUserInfo(updateUser);
     }
 
     [HttpGet]
