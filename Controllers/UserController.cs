@@ -66,10 +66,16 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetProfileByUserId/{username}")]
-    public IEnumerable<UserModel> GetProfileByUserId(string username)
+    [Route("GetProfileByUsername/{username}")]
+    public IEnumerable<UserModel> GetProfileByUsername(string username)
     {
-        return _data.GetProfileByUserId(username);
+        return _data.GetProfileByUsername(username);
+    }
+    [HttpGet]
+    [Route("GetProfileByUserID/{id}")]
+    public UserModel GetProfileByUserID(int id)
+    {
+        return _data.GetProfileByUserID(id);
     }
 
     [HttpPut]

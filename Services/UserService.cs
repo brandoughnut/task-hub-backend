@@ -192,9 +192,13 @@ public class UserService : ControllerBase
         }
         return result;
     }
-    public IEnumerable<UserModel> GetProfileByUserId(string username)
+    public IEnumerable<UserModel> GetProfileByUsername(string username)
     {
         return _context.UserInfo.Where(item => item.Username == username);
+    }
+    public UserModel GetProfileByUserID(int id)
+    {
+        return _context.UserInfo.SingleOrDefault(item => item.ID == id);
     }
 
     public bool ForgotPassword(string username, string newPassword){
