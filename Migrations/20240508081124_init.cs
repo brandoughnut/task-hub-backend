@@ -18,7 +18,8 @@ namespace task_hub_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID = table.Column<int>(type: "int", nullable: false),
                     SenderID = table.Column<int>(type: "int", nullable: false),
-                    Message = table.Column<int>(type: "int", nullable: false)
+                    Room = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -29,8 +29,13 @@ namespace task_hub_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("Message")
-                        .HasColumnType("int");
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Room")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SenderID")
                         .HasColumnType("int");
