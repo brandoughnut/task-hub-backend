@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240508085413_init")]
+    [Migration("20240515045849_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -39,9 +39,6 @@ namespace task_hub_backend.Migrations
                     b.Property<string>("Room")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SenderID")
-                        .HasColumnType("int");
 
                     b.Property<int>("UserID")
                         .HasColumnType("int");
