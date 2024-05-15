@@ -50,4 +50,9 @@ namespace task_hub_backend.Services;
             }
             return result;
         }
+
+        public TaskModel GetTaskByID(int taskID)
+        {
+            return _context.TaskInfo.SingleOrDefault(task => task.ID == taskID);
+        }
     }

@@ -55,4 +55,11 @@ namespace task_hub_backend.Controllers;
         {
             return _data.DeleteTask(taskID);
         }
+
+        [HttpGet]
+        [Route("GetTaskByID/{taskID}")]
+        public TaskModel GetTaskByID(int taskID)
+        {
+            return _data.GetTaskByID(taskID);
+        }
     }
