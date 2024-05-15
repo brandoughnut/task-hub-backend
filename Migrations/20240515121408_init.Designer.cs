@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240515051750_init")]
+    [Migration("20240515121408_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -32,15 +32,13 @@ namespace task_hub_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Room")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Room")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserID1")
+                        .HasColumnType("int");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserID2")
                         .HasColumnType("int");
 
                     b.HasKey("ID");

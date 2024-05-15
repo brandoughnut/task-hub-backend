@@ -2,5 +2,6 @@ namespace task_hub_backend.Models;
 
     public class UserConnection
     {
-        public int MyProperty { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Room { get; set; } = string.Empty;
     }

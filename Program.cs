@@ -1,9 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using task_hub_backend.Hubs;
 using task_hub_backend.Services;
 using task_hub_backend.Services.Context;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSignalR();
 
 // Add services to the container.
 builder.Services.AddScoped<UserService>();
@@ -41,5 +44,7 @@ app.UseCors("BlogPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<ChatHub>("/Chat");
 
 app.Run();

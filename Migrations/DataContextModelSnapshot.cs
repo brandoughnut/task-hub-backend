@@ -29,15 +29,13 @@ namespace task_hub_backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Room")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Room")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserID1")
+                        .HasColumnType("int");
 
-                    b.Property<int>("UserID")
+                    b.Property<int>("UserID2")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
