@@ -22,7 +22,8 @@ builder.Services.AddCors(options => options.AddPolicy("BlogPolicy",
 builder => {
     builder.WithOrigins("http://localhost:3000", "http://localhost:5044", "http://localhost:5105", "https://task-hub-fullstack.vercel.app")
     .AllowAnyHeader()
-    .AllowAnyMethod();
+    .AllowAnyMethod()
+    .AllowCredentials();
 }));
 
 
@@ -49,6 +50,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<ChatHub>("/chat");
+app.MapHub<ChatHub>("/Chat");
 
 app.Run();

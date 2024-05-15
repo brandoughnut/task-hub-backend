@@ -9,27 +9,27 @@ namespace task_hub_backend.Hubs;
 
         private readonly SharedDb _shared;
 
-        public ChatHub(SharedDb shared)
-        {
-            _shared = shared;
-        }
+        public ChatHub(SharedDb shared) => _shared = shared;
 
+        public async Task JoinChat(UserConnection conn)
+        {
+            await Clients.All
+                            .SendAsync("ReceiveMessage", "admin", $"{conn.Username} has joined");
+        }
         public async Task JoinSpecificChatRoom(UserConnection conn)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, conn.Room);
 
             _shared.connections[Context.ConnectionId] = conn;
 
-            await Clients.Group(conn.Room)
-            .SendAsync("JoinSpecificChatRoom", "admin");
+            await Clients.Group(conn.Room).SendAsync("JoinSpecificChatRoom", "admin", $"{conn.Username} has joined");
         }
 
         public async Task SendMessage(string msg)
         {
             if(_shared.connections.TryGetValue(Context.ConnectionId, out UserConnection conn))
             {
-                await Clients.Group(conn.Room)
-                .SendAsync("ReceiveMessage", conn.Username, msg);
+                await Clients.Group(conn.Room).SendAsync("ReceiveMessage", conn.Username, msg);
             }
         }
     }
