@@ -4201,19 +4201,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/marcosrodriguez/.nuget/packages/": {}
+    "/Users/brandon/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/marcosrodriguez/Documents/CodeStack/TaskHubBackendV2/task-hub-backend/task-hub-backend.csproj",
+      "projectUniqueName": "/Users/brandon/Documents/Codestack/task-hub-backend/task-hub-backend.csproj",
       "projectName": "task-hub-backend",
-      "projectPath": "/Users/marcosrodriguez/Documents/CodeStack/TaskHubBackendV2/task-hub-backend/task-hub-backend.csproj",
-      "packagesPath": "/Users/marcosrodriguez/.nuget/packages/",
-      "outputPath": "/Users/marcosrodriguez/Documents/CodeStack/TaskHubBackendV2/task-hub-backend/obj/",
+      "projectPath": "/Users/brandon/Documents/Codestack/task-hub-backend/task-hub-backend.csproj",
+      "packagesPath": "/Users/brandon/.nuget/packages/",
+      "outputPath": "/Users/brandon/Documents/Codestack/task-hub-backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/marcosrodriguez/.nuget/NuGet/NuGet.Config"
+        "/Users/brandon/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
