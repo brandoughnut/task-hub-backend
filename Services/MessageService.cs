@@ -32,7 +32,7 @@ namespace task_hub_backend.Services;
         public bool DirectMessage(int userID1, int userID2)
         {
             bool result = false;
-            if(!IsUserAlreadyDM(userID1, userID2) && DoesUserExist(userID2)){
+            if(!IsUserAlreadyDM(userID1, userID2) && DoesUserExist(userID2) && (userID1 != userID2)){
                 MessageModel newMessage = new MessageModel();
                 newMessage.Room = _context.MessageInfo.Count() + 1;
                 newMessage.UserID1 = userID1;
