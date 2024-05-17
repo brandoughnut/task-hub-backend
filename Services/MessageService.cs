@@ -44,4 +44,20 @@ namespace task_hub_backend.Services;
 
             return result;
         }
+
+        public IEnumerable<MessageModel> GetAllDMS(int userID)
+        {
+            return _context.MessageInfo.Where(user => (user.UserID1 == userID) || (user.UserID2 == userID));
+        }
+
+        public bool DeleteDM(int ID)
+        {
+            MessageModel room = _context.MessageInfo.SingleOrDefault(yeah => yeah.ID == ID);
+            bool result = false;
+            if(room != null){
+                _context.Remove<MessageModel>(room);
+                result = _context.SaveChanges() != 0;
+            }
+            return result;
+        }
     }

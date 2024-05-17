@@ -20,4 +20,18 @@ namespace task_hub_backend.Controllers;
         {
             return _data.DirectMessage(userID1, userID2);
         }
+
+        [HttpGet]
+        [Route("GetAllDMS/{userID}")]
+        public IEnumerable<MessageModel> GetAllDMS(int userID)
+        {
+            return _data.GetAllDMS(userID);
+        }
+
+        [HttpDelete]
+        [Route("DeleteDM/{ID}")]
+        public bool DeleteDM(int ID)
+        {
+            return _data.DeleteDM(ID);
+        }
     }
