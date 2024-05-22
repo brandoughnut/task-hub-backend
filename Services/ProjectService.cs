@@ -87,13 +87,33 @@ namespace task_hub_backend.Services;
             return _context.RelationInfo.Where(user => user.UserID == userID);
         }
 
+        public IEnumerable<NotificationModel> GetAllNotificationsUserHas(int userID)
+        {
+            return _context.NotificationInfo.Where(user => user.UserID == userID);
+        }
+
+        public bool DeleteNotification(int notificationID)
+        {
+            NotificationModel notification = _context.NotificationInfo.SingleOrDefault(notification => notification.ID == notificationID);
+            bool result = false;
+            if(notification != null){
+                _context.Remove<NotificationModel>(notification);
+                result = _context.SaveChanges() != 0;
+            }
+            return result;
+        }
+
         public bool AddUserToProjectByUserId(int userID, int projectID)
         {
             RelationModel newUser = new RelationModel();
             bool result = false;
+            NotificationModel newNotification = new NotificationModel();
+
+            ProjectModel project = GetProjectByID(projectID);
 
             if(!IsUserInProject(userID, projectID) && DoesUserExist(userID)){
-
+            newNotification.UserID = userID;
+            newNotification.Message = $"You have been added to {project.ProjectName}";
             newUser.UserID = userID;
             newUser.ProjectID = projectID;
             

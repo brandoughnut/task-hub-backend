@@ -60,4 +60,16 @@ namespace task_hub_backend.Services;
             }
             return result;
         }
+
+        public bool CreateMessage(MessageDataModel newMessage)
+        {
+            _context.Add(newMessage);
+
+            return _context.SaveChanges() != 0;
+        }
+
+        public IEnumerable<MessageDataModel> GetAllMessagesWithinRoom(int roomID)
+        {
+            return _context.MessageDataInfo.Where(room => room.Room == roomID);
+        }
     }

@@ -78,4 +78,18 @@ namespace task_hub_backend.Controllers;
             return _data.RemoveUserFromProjectByUserId(userID, projectID);
         }
 
+        [HttpGet]
+        [Route("GetAllNotificationsUserHas/{userID}")]
+        public IEnumerable<NotificationModel> GetAllNotificationsUserHas(int userID)
+        {
+            return _data.GetAllNotificationsUserHas(userID);
+        }
+
+        [HttpDelete]
+        [Route("DeleteNotification/{notificationID}")]
+        public bool DeleteNotification(int notificationID)
+        {
+            return _data.DeleteNotification(notificationID);
+        }
+
     }

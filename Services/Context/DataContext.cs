@@ -10,6 +10,8 @@ namespace task_hub_backend.Services.Context;
         public DbSet<RelationModel> RelationInfo { get; set; }
         public DbSet<TaskModel> TaskInfo { get; set; }
         public DbSet<MessageModel> MessageInfo { get; set; }
+        public DbSet<NotificationModel> NotificationInfo { get; set; }
+        public DbSet<MessageDataModel> MessageDataInfo { get; set; }
         public DataContext(DbContextOptions options) : base(options)
         {
             

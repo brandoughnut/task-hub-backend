@@ -34,4 +34,18 @@ namespace task_hub_backend.Controllers;
         {
             return _data.DeleteDM(ID);
         }
+
+        [HttpPost]
+        [Route("CreateMessage")]
+        public bool CreateMessage(MessageDataModel newMessage)
+        {
+            return _data.CreateMessage(newMessage);
+        }
+
+        [HttpGet]
+        [Route("GetAllMessagesWithinRoom/{roomID}")]
+        public IEnumerable<MessageDataModel> GetAllMessagesWithinRoom(int roomID)
+        {
+            return _data.GetAllMessagesWithinRoom(roomID);
+        }
     }
