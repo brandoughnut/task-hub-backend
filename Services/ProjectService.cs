@@ -64,9 +64,16 @@ namespace task_hub_backend.Services;
         public bool RemoveUserFromProjectByUserId(int userID, int projectID)
         {
             RelationModel user = _context.RelationInfo.SingleOrDefault(retrieve => retrieve.UserID == userID && retrieve.ProjectID == projectID);
+
+            NotificationModel newNotification = new NotificationModel();
+
+            ProjectModel project = GetProjectByID(projectID);
             bool result = false;
             if(user != null){
                 _context.Remove<RelationModel>(user);
+                newNotification.UserID = userID;
+                newNotification.Message = $"You have been removed from {project.ProjectName}";
+                _context.Add(newNotification);
                 result = _context.SaveChanges() != 0;
             }
             return result;
@@ -103,6 +110,17 @@ namespace task_hub_backend.Services;
             return result;
         }
 
+        public bool ClearNotifications(int userID)
+        {
+            IEnumerable<NotificationModel> notification = GetAllNotificationsUserHas(userID);
+            bool result = false;
+            if(notification != null){
+                _context.RemoveRange(notification);
+                result = _context.SaveChanges() != 0;
+            }
+            return result;
+        }
+
         public bool AddUserToProjectByUserId(int userID, int projectID)
         {
             RelationModel newUser = new RelationModel();
@@ -118,6 +136,7 @@ namespace task_hub_backend.Services;
             newUser.ProjectID = projectID;
             
             _context.Add(newUser);
+            _context.Add(newNotification);
 
             result = _context.SaveChanges() != 0;
             }

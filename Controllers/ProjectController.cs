@@ -92,4 +92,11 @@ namespace task_hub_backend.Controllers;
             return _data.DeleteNotification(notificationID);
         }
 
+        [HttpDelete]
+        [Route("ClearNotifications/{userID}")]
+        public bool ClearNotifications(int userID)
+        {
+            return _data.ClearNotifications(userID);
+        }
+
     }
