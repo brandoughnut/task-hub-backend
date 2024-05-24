@@ -4,7 +4,6 @@ namespace task_hub_backend.Models;
     {
         public int ID { get; set; }
         public int SenderID { get; set; }
-        public int ReceiverID { get; set; }
         public int Room { get; set; }
         public string Message { get; set; }
 

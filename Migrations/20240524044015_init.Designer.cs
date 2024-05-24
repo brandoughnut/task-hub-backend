@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240517090526_init")]
+    [Migration("20240524044015_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -23,6 +23,29 @@ namespace task_hub_backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("task_hub_backend.Models.MessageDataModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Room")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("MessageDataInfo");
+                });
 
             modelBuilder.Entity("task_hub_backend.Models.MessageModel", b =>
                 {
@@ -44,6 +67,25 @@ namespace task_hub_backend.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("MessageInfo");
+                });
+
+            modelBuilder.Entity("task_hub_backend.Models.NotificationModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("NotificationInfo");
                 });
 
             modelBuilder.Entity("task_hub_backend.Models.ProjectModel", b =>
