@@ -11,7 +11,7 @@ using task_hub_backend.Services.Context;
 namespace task_hub_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240524101115_init")]
+    [Migration("20240527092257_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -54,6 +54,9 @@ namespace task_hub_backend.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("bit");
 
                     b.Property<int>("Room")
                         .HasColumnType("int");

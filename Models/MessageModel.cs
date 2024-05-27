@@ -6,6 +6,7 @@ namespace task_hub_backend.Models;
         public int UserID1 { get; set; }
         public int UserID2 { get; set; }
         public int Room { get; set; }
+        public bool IsVisible { get; set; }
         
         public MessageModel()
         {

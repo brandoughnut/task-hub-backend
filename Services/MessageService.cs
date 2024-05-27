@@ -32,11 +32,18 @@ namespace task_hub_backend.Services;
         public bool DirectMessage(int userID1, int userID2)
         {
             bool result = false;
-            if(!IsUserAlreadyDM(userID1, userID2) && DoesUserExist(userID2) && (userID1 != userID2)){
+            if(IsUserAlreadyDM(userID1, userID2)){
+                MessageModel existingMessage = _context.MessageInfo.SingleOrDefault(user => (user.UserID1 == userID1) && (user.UserID2 == userID2));
+                existingMessage.IsVisible = true;
+                _context.Update<MessageModel>(existingMessage);
+                result = _context.SaveChanges() != 0;
+            }
+            else if(!IsUserAlreadyDM(userID1, userID2) && DoesUserExist(userID2) && (userID1 != userID2)){
                 MessageModel newMessage = new MessageModel();
                 newMessage.Room = _context.MessageInfo.Count() + 1;
                 newMessage.UserID1 = userID1;
                 newMessage.UserID2 = userID2;
+                newMessage.IsVisible = true;
                 _context.Add(newMessage);
                 result = _context.SaveChanges() != 0;
             }
@@ -55,7 +62,8 @@ namespace task_hub_backend.Services;
             MessageModel room = _context.MessageInfo.SingleOrDefault(yeah => yeah.ID == ID);
             bool result = false;
             if(room != null){
-                _context.Remove<MessageModel>(room);
+                room.IsVisible = false;
+                _context.Update<MessageModel>(room);
                 result = _context.SaveChanges() != 0;
             }
             return result;

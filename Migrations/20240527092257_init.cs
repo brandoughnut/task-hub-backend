@@ -33,7 +33,8 @@ namespace task_hub_backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserID1 = table.Column<int>(type: "int", nullable: false),
                     UserID2 = table.Column<int>(type: "int", nullable: false),
-                    Room = table.Column<int>(type: "int", nullable: false)
+                    Room = table.Column<int>(type: "int", nullable: false),
+                    IsVisible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
